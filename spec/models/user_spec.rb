@@ -38,4 +38,13 @@ RSpec.describe User, :type => :model do
       end
     end
   end
+  describe 'count_tweets' do
+    context 'correctoly_check' do
+      it 'valid' do
+        user = create(:user)
+        create(:tweet, user: user)
+        expect(user.count_tweets).to 1
+      end
+    end
+  end
 end
