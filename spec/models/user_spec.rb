@@ -28,4 +28,14 @@ RSpec.describe User, :type => :model do
       end
     end
   end
+  describe '#email' do
+    context 'duplicate_check' do
+      it 'not valid' do
+        User.create(email: 'duplicate@test.com', password: 'testtesttest', nickname: 'test')
+        user = User.new(email: 'duplicate@test.com', password: '0123456789', nickname: 'test')
+        user.valid?
+        expect(user.errors[:email]).to include('has already been taken')
+      end
+    end
+  end
 end
