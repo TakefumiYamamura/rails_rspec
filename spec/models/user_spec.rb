@@ -43,7 +43,7 @@ RSpec.describe User, :type => :model do
       it 'valid' do
         user = create(:user)
         create(:tweet, user: user)
-        expect(user.count_tweets).to 1
+        expect(user.count_tweets).to eq 1
       end
     end
   end
